@@ -1,4 +1,4 @@
-package Main;
+package com.ganziqim.core;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

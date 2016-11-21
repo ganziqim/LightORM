@@ -1,10 +1,11 @@
-package Main;
+package com.ganziqim.core;
+
+import Test.Student;
 
 import java.lang.reflect.Field;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
@@ -12,16 +13,6 @@ import java.util.ArrayList;
 // create by GanZuQim at 2016.10.27
 // 2016.10.27: createTable
 public class Program {
-    public static void main(String[] args) {
-        Student stu = new Student();
-
-        ArrayList<String> objs = new ArrayList<String>();
-
-        objs.add("Student");
-
-        createTable(objs);
-    }
-
     public static void createTable(String obj) {
         ArrayList<String> objs = new ArrayList<String>();
         objs.add(obj);
