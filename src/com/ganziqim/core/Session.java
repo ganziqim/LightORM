@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class Session {
+class Session {
     ArrayList<String> savepoints = null;
     Connection con = null;
     Statement stmt = null;
@@ -80,7 +80,7 @@ public class Session {
         }
     }
 
-    public void add(BaseEntity obj) {
+    public void add(Object obj) {
         String sql = "INSERT INTO ";
         String[] objNames = obj.getClass().getName().split("\\.");
         String objName = objNames[objNames.length - 1];

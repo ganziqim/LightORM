@@ -2,7 +2,6 @@ package Test;
 
 import com.ganziqim.annotation.MaxLength;
 import com.ganziqim.annotation.PrimaryKey;
-import com.ganziqim.core.BaseEntity;
 
 /**
  * Created by admin on 2016/10/27.

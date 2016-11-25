@@ -1,11 +1,7 @@
 package com.ganziqim.core;
 
-public class Query {
+class Query {
     public void delete() {
-
-    }
-
-    public void insert() {
 
     }
 
@@ -17,7 +13,20 @@ public class Query {
 
     }
 
+    // TODO
     public void commit() {
+
+    }
+
+    public void all() {
+
+    }
+
+    public void first() {
+
+    }
+
+    public void last() {
 
     }
 }

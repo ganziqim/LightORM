@@ -59,7 +59,8 @@ public class SqlStringGenerator {
     }
 
     public static void main(String[] args) {
-        String a = "sdf";
-        System.out.println(getValueString(a));
+        Math.random();
+//        String a = "sdf";
+//        System.out.println(getValueString(a));
     }
 }
