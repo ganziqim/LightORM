@@ -1,5 +1,7 @@
 package com.ganziqim.core;
 
+import com.ganziqim.utils.Dao;
+
 import java.sql.DriverManager;
 
 /**
@@ -31,8 +33,8 @@ public class MysqlDatabase extends Database {
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/" + databaseName, userName, password);
-
-            stmt = con.createStatement();
+            con.setAutoCommit(false);
+            dao = new Dao(con);
         } catch (Exception e) {
             e.printStackTrace();
             return false;

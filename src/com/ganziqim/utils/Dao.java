@@ -16,6 +16,24 @@ public class Dao {
         this.conn = conn;
 	}
 
+    public List<Map<String, Object>> excuteQuery(String sql) {
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        List<Map<String, Object>> resultList = new ArrayList<Map<String, Object>>();
+
+        try {
+            stmt = conn.prepareStatement(sql);
+
+            rs = stmt.executeQuery(); // 得到结果集
+
+            resultList = resultSetHander(rs);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return resultList;
+    }
+
 	public List<Map<String, Object>> excuteQuery(String sql, Object[] params) {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -38,7 +56,37 @@ public class Dao {
 		return resultList;
 	}
 
-	public int excuteUpdate(String sql, Object[] params) {
+	public int executeUpdate(String sql) {
+		PreparedStatement stmt = null;
+		int rs = 0;
+
+		try {
+			conn.setAutoCommit(false); // 关闭事务
+			stmt = conn.prepareStatement(sql); // 创建PreparedStatement对象
+
+			// 执行查询
+			rs = stmt.executeUpdate();
+
+			// 提交事务
+			conn.commit();
+			// 把事务设置为原来的状态
+			conn.setAutoCommit(true);
+		} catch (SQLException e) {
+			// 捕获异常时事务回滚
+			try {
+				conn.rollback();
+				if (!conn.getAutoCommit())
+					conn.setAutoCommit(true);
+			} catch (SQLException e2) {
+				e2.printStackTrace();
+			}
+			e.printStackTrace();
+		}
+
+		return rs;
+	}
+
+	public int executeUpdate(String sql, Object[] params) {
 		PreparedStatement stmt = null;
 		int rs = 0;
 

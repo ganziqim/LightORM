@@ -1,72 +1,75 @@
 package com.ganziqim.core;
 
+import com.ganziqim.utils.Dao;
 import com.ganziqim.utils.InstanceValueGetter;
 import com.ganziqim.utils.SqlStringGenerator;
 
 import java.lang.reflect.Field;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.sql.Savepoint;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-class Session {
-    ArrayList<String> savepoints = null;
+public class Session {
     Connection con = null;
-    Statement stmt = null;
+    Dao dao = null;
+    ArrayList<Savepoint> savepoints = null;
 
-    public Session(Connection con, Statement stmt) {
-        savepoints = new ArrayList<String>();
-        savepoints.add("default1");
-
+    public Session(Connection con) {
         this.con = con;
+
+        savepoints = new ArrayList<Savepoint>();
+        Savepoint initSavepoint = null;
         try {
-            this.stmt = con.createStatement();
-            stmt.execute("START TRANSACTION");
-            stmt.execute("SAVEPOINT " + savepoints.get(0));
+            initSavepoint = con.setSavepoint("init");
+            savepoints.add(initSavepoint);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        dao = new Dao(con);
+    }
+
+    public boolean addSavepoint(String savepointName) {
+        if (savepoints.contains(savepointName)) {
+            return false;
+        } else {
+            try {
+                savepoints.add(con.setSavepoint(savepointName));
+            } catch (Exception e) {
+                e.printStackTrace();
+                return false;
+            }
+            return true;
+        }
+    }
+
+    public void rollback() {
+        try {
+            con.rollback();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public boolean addSavepoint(String newSavepoint) {
-        if (savepoints.contains(newSavepoint)) {
-            return false;
-        } else {
-            savepoints.add(newSavepoint);
-            return true;
-        }
-    }
-
-    public void rollbackAll() {
+    public void rollback(String savepointName) {
         try {
-            stmt.execute("ROLLBACK");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        savepoints.clear();
-    }
-
-    public void rollback() {
-        rollback(savepoints.get(savepoints.size() - 1));
-    }
-
-    public void rollback(String savepoint) {
-        int index = savepoints.indexOf(savepoint);
-        savepoints.subList(0, index);
-
-        try {
-            stmt.execute("ROLLBACK TO " + savepoint);
-        } catch (SQLException e) {
+            for (Savepoint savepoint : savepoints) {
+                if (savepoint.getSavepointName() == savepointName) {
+                    con.rollback(savepoint);
+                    savepoints.remove(savepoint);
+                }
+            }
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     public void commit() {
-        System.out.println("trying commit");
         try {
-            stmt.execute("COMMIT");
-        } catch (SQLException e) {
+            con.commit();
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -74,7 +77,6 @@ class Session {
     public void dispose() {
         try {
             con.close();
-            stmt.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -111,15 +113,16 @@ class Session {
         sql += columns + " VALUES " + values;
 
         System.out.println("trying " + sql);
+        Statement stmt = null;
         try {
+            stmt = con.createStatement();
             stmt.execute(sql);
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public void remove() {
-        String sql = "DELETE FROM ";
-
+    public Query delete(Class cls) {
+        return new Query(cls, this);
     }
 }

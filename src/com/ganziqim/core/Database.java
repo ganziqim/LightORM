@@ -2,13 +2,13 @@ package com.ganziqim.core;
 
 import com.ganziqim.annotation.MaxLength;
 import com.ganziqim.annotation.PrimaryKey;
+import com.ganziqim.utils.Dao;
 import com.ganziqim.utils.SqlStringGenerator;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 
 // LightORM
@@ -16,9 +16,10 @@ import java.util.ArrayList;
 // 2016.10.27: createTable
 class Database implements IDatabase {
     protected Connection con = null;
-    protected Statement stmt = null;
 
     protected boolean connected = false;
+
+    protected Dao dao = null;
 
     public boolean connect() {
         return false;
@@ -66,7 +67,7 @@ class Database implements IDatabase {
             System.out.println("trying " + sql);
 
             try {
-                stmt.executeUpdate(sql);
+                dao.executeUpdate(sql);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -74,13 +75,12 @@ class Database implements IDatabase {
     }
 
     public Session getSession() {
-        return new Session(con, stmt);
+        return new Session(con);
     }
 
     public void dispose() {
         try {
             con.close();
-            stmt.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }

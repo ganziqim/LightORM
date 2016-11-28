@@ -1,15 +1,15 @@
 package com.ganziqim.core;
 
 class Query {
-    public void delete() {
+    Class cls = null;
+    Session ses = null;
 
+    public Query(Class cls, Session ses) {
+        this.cls = cls;
+        this.ses = ses;
     }
 
-    public void update() {
-
-    }
-
-    public void select() {
+    public void where(String exp) {
 
     }
 

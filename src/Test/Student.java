@@ -6,7 +6,7 @@ import com.ganziqim.annotation.PrimaryKey;
 /**
  * Created by admin on 2016/10/27.
  */
-public class Student extends BaseEntity {
+public class Student {
     @PrimaryKey
     private int id;
     @MaxLength(30)
