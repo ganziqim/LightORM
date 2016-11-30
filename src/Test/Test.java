@@ -1,8 +1,9 @@
 package Test;
 
 import com.ganziqim.core.IDatabase;
+import com.ganziqim.core.IQuery;
 import com.ganziqim.core.MysqlDatabase;
-import com.ganziqim.core.Session;
+import com.ganziqim.core.ISession;
 
 /**
  * Created by admin on 2016/11/7.
@@ -18,14 +19,24 @@ public class Test {
 
         db.createTable(Student.class);
 
-        Session s = db.getSession();
+        ISession s = db.getSession();
 
         Student stu = new Student();
-        stu.setId(234);
+        stu.setId(1);
         stu.setAge(12);
         stu.setName("jzs");
-        s.add(stu);
-        s.commit();
+
+        Student stu2 = new Student();
+        stu2.setId(2);
+        stu2.setAge(22);
+        stu2.setName("haha");
+
+        IQuery q = s.getQuery(Student.class);
+
+        q.add(stu);
+        q.add(stu2);
+
+        q.delete().where("id = 2").execute();
 
         s.dispose();
         db.dispose();

@@ -16,9 +16,7 @@ import java.util.ArrayList;
 // 2016.10.27: createTable
 class Database implements IDatabase {
     protected Connection con = null;
-
     protected boolean connected = false;
-
     protected Dao dao = null;
 
     public boolean connect() {

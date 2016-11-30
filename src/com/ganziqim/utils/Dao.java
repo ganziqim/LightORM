@@ -75,8 +75,8 @@ public class Dao {
 			// 捕获异常时事务回滚
 			try {
 				conn.rollback();
-				if (!conn.getAutoCommit())
-					conn.setAutoCommit(true);
+//				if (!conn.getAutoCommit())
+//					conn.setAutoCommit(true);
 			} catch (SQLException e2) {
 				e2.printStackTrace();
 			}

@@ -11,12 +11,12 @@ import java.sql.Savepoint;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class Session {
-    Connection con = null;
-    Dao dao = null;
-    ArrayList<Savepoint> savepoints = null;
+class Session implements ISession {
+    private Connection con = null;
+    private Dao dao = null;
+    private ArrayList<Savepoint> savepoints = null;
 
-    public Session(Connection con) {
+    Session(Connection con) {
         this.con = con;
 
         savepoints = new ArrayList<Savepoint>();
@@ -27,8 +27,10 @@ public class Session {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
 
-        dao = new Dao(con);
+    Connection getCon() {
+        return con;
     }
 
     public boolean addSavepoint(String savepointName) {
@@ -82,47 +84,7 @@ public class Session {
         }
     }
 
-    public void add(Object obj) {
-        String sql = "INSERT INTO ";
-        String[] objNames = obj.getClass().getName().split("\\.");
-        String objName = objNames[objNames.length - 1];
-
-        sql += objName + " ";
-
-        Field[] fields = obj.getClass().getDeclaredFields();
-
-        String columns = "(";
-        String values = "(";
-
-        for (Field field : fields) {
-            columns += field.getName() + ",";
-
-            try {
-                values += SqlStringGenerator.getValueString(InstanceValueGetter.getValue(obj, field)) + ",";
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-
-        columns = columns.substring(0, columns.length()-1);
-        values = values.substring(0, values.length()-1);
-
-        columns += ")";
-        values += ")";
-
-        sql += columns + " VALUES " + values;
-
-        System.out.println("trying " + sql);
-        Statement stmt = null;
-        try {
-            stmt = con.createStatement();
-            stmt.execute(sql);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public Query delete(Class cls) {
+    public Query getQuery(Class cls) {
         return new Query(cls, this);
     }
 }
