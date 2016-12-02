@@ -45,7 +45,7 @@ public class SqlStringGenerator {
 
             case "java.lang.String":
             case "class java.lang.String":
-                return "\"" + obj.toString() + "\"";
+                return "\'" + obj.toString() + "\'";
 
             case "java.lang.Float":
             case "java.lang.Double":

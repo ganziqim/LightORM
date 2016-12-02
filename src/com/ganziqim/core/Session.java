@@ -1,14 +1,10 @@
 package com.ganziqim.core;
 
 import com.ganziqim.utils.Dao;
-import com.ganziqim.utils.InstanceValueGetter;
-import com.ganziqim.utils.SqlStringGenerator;
 
-import java.lang.reflect.Field;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Savepoint;
-import java.sql.Statement;
 import java.util.ArrayList;
 
 class Session implements ISession {
@@ -84,7 +80,7 @@ class Session implements ISession {
         }
     }
 
-    public Query getQuery(Class cls) {
+    public IQuery getQuery(Class cls) {
         return new Query(cls, this);
     }
 }

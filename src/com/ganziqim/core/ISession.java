@@ -9,5 +9,5 @@ public interface ISession {
     void rollback(String savepointName);
     void commit();
     void dispose();
-    Query getQuery(Class cls);
+    IQuery getQuery(Class cls);
 }

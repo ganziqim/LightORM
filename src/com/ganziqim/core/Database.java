@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 // LightORM
-// create by GanZuQim at 2016.10.27
+// create by GanZiQim at 2016.10.27
 // 2016.10.27: createTable
 class Database implements IDatabase {
     protected Connection con = null;
