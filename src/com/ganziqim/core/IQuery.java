@@ -12,5 +12,7 @@ public interface IQuery {
     IQuery update(String exp);
     IQuery select();
     IQuery where(String exp);
+    IQuery limit(int offset, int rows);
+    IQuery limit(int rows);
     List execute();
 }

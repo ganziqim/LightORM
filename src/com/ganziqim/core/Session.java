@@ -11,10 +11,11 @@ class Session implements ISession {
     private Connection con = null;
     private Dao dao = null;
     private ArrayList<Savepoint> savepoints = null;
+    private boolean isUsed = false;
 
     Session(Connection con) {
         this.con = con;
-
+        dao = new Dao(con);
         savepoints = new ArrayList<Savepoint>();
         Savepoint initSavepoint = null;
         try {
@@ -27,6 +28,18 @@ class Session implements ISession {
 
     Connection getCon() {
         return con;
+    }
+
+    public Dao getDao() {
+        return dao;
+    }
+
+    public boolean isUsed() {
+        return isUsed;
+    }
+
+    public void setUsed(boolean used) {
+        isUsed = used;
     }
 
     public boolean addSavepoint(String savepointName) {

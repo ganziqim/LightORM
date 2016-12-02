@@ -12,6 +12,7 @@ public class Student {
     @MaxLength(30)
     private String name;
     private int age;
+    private double tuition;
 
     public Student() {
 
@@ -39,5 +40,13 @@ public class Student {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public double getTuition() {
+        return tuition;
+    }
+
+    public void setTuition(double tuition) {
+        this.tuition = tuition;
     }
 }

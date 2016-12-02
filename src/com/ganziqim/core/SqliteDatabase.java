@@ -2,6 +2,7 @@ package com.ganziqim.core;
 
 import com.ganziqim.utils.Dao;
 
+import java.sql.Connection;
 import java.sql.DriverManager;
 
 /**
@@ -24,16 +25,16 @@ public class SqliteDatabase extends Database {
     }
 
     @Override
-    public boolean connect() {
+    public Connection connect() {
+        Connection conn = null;
         try {
             Class.forName("org.sqlite.JDBC");
-            con = DriverManager.getConnection("jdbc:sqlite:" + filePath);
-            dao = new Dao(con);
+            conn = DriverManager.getConnection("jdbc:sqlite:" + filePath);
         } catch(Exception e) {
             e.printStackTrace();
-            return false;
+            return null;
         }
         connected = true;
-        return true;
+        return conn;
     }
 }

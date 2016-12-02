@@ -1,9 +1,6 @@
 package Test;
 
-import com.ganziqim.core.IDatabase;
-import com.ganziqim.core.IQuery;
-import com.ganziqim.core.MysqlDatabase;
-import com.ganziqim.core.ISession;
+import com.ganziqim.core.*;
 
 import java.util.*;
 
@@ -12,34 +9,35 @@ import java.util.*;
  */
 public class Test {
     public static void main(String[] args) {
-        IDatabase db = new MysqlDatabase("lightorm", "root", "root");
+        //IDatabase db = new MysqlDatabase("lightorm", "root", "root");
+        IDatabase db = new SqliteDatabase("student.db");
 
-        if (!db.connect()) {
-            System.out.println("connect fail!");
+        if (!db.init()) {
+            System.out.println("init fail!");
             return;
         }
-//
-//        db.createTable(Student.class);
+
+        //db.createTable(Student.class);
 
         ISession s = db.getSession();
 
-//        Student stu = new Student();
-//        stu.setId(1);
-//        stu.setAge(12);
-//        stu.setName("jzs");
-//
-//        Student stu2 = new Student();
-//        stu2.setId(2);
-//        stu2.setAge(22);
-//        stu2.setName("haha");
-//
-//        ArrayList<Student> list = new ArrayList<Student>();
-//        list.add(stu);
-//        list.add(stu2);
-//
-//        s.getQuery(Student.class).addAll(list);
+        Student stu = new Student();
+        stu.setId(3);
+        stu.setAge(45);
+        stu.setName("sdf");
+
+        Student stu2 = new Student();
+        stu2.setId(4);
+        stu2.setAge(30);
+        stu2.setName("jia");
+
+        ArrayList<Student> list = new ArrayList<Student>();
+        list.add(stu);
+        list.add(stu2);
+
+        s.getQuery(Student.class).addAll(list);
 //        s.getQuery(Student.class).delete().where("id = 2").execute();
-        s.getQuery(Student.class).update("name = \'heiheihei\'").execute();
+//        s.getQuery(Student.class).update("name = \'heiheihei\'").execute();
 
 
 //        List<Student> lst = s.getQuery(Student.class).select().execute();
@@ -47,7 +45,13 @@ public class Test {
 //            System.out.println(stu.getId() + " " + stu.getName());
 //        }
 
-        s.dispose();
+//        List<Student> stus = s.getQuery(Student.class).select().limit(1, 2).execute();
+//        for (Student st : stus) {
+//            System.out.println(st.getId() + " " + st.getName());
+//        }
+
+        s.commit();
+
         db.dispose();
     }
 }

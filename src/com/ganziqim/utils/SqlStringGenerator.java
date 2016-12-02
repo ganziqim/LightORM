@@ -28,6 +28,8 @@ public class SqlStringGenerator {
 
             case "java.lang.Float":
             case "java.lang.Double":
+            case "double":
+            case "float":
                 return "FLOAT";
 
             case "java.util.Date":

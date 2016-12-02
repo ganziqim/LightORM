@@ -2,25 +2,37 @@ package com.ganziqim.core;
 
 import com.ganziqim.annotation.MaxLength;
 import com.ganziqim.annotation.PrimaryKey;
-import com.ganziqim.utils.Dao;
 import com.ganziqim.utils.SqlStringGenerator;
-
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 // LightORM
 // create by GanZiQim at 2016.10.27
 // 2016.10.27: createTable
 class Database implements IDatabase {
-    protected Connection con = null;
     protected boolean connected = false;
-    protected Dao dao = null;
+    private int connectionNumbers = 5;
+    private ArrayList<Session> sessionPool = null;
 
-    public boolean connect() {
-        return false;
+    public Database() {
+        sessionPool = new ArrayList<Session>();
+    }
+
+    public Database(int ConnectionNumbers) {
+        this.connectionNumbers = ConnectionNumbers;
+    }
+
+    public boolean init() {
+        for (int i = 0; i < connectionNumbers; i++) {
+            sessionPool.add(new Session(connect()));
+        }
+        return true;
+    }
+
+    public Connection connect() {
+        return null;
     }
 
     public void createTable(Class obj) {
@@ -65,7 +77,7 @@ class Database implements IDatabase {
             System.out.println("trying " + sql);
 
             try {
-                dao.executeUpdate(sql);
+                sessionPool.get(0).getDao().executeUpdate(sql);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -73,14 +85,28 @@ class Database implements IDatabase {
     }
 
     public Session getSession() {
-        return new Session(con);
+        for (Session ses : sessionPool) {
+            if (!ses.isUsed()) {
+                ses.setUsed(true);
+                return ses;
+            }
+        }
+        System.out.println("full!");
+        return null;
     }
 
     public void dispose() {
-        try {
-            con.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
+        for (Session ses : sessionPool) {
+            ses.dispose();
+        }
+        connected = false;
+    }
+
+    public void recovery(ISession session) {
+        for (Session ses : sessionPool) {
+            if (ses.equals(session)) {
+                ses.setUsed(false);
+            }
         }
     }
 }

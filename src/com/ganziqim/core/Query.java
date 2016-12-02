@@ -180,11 +180,17 @@ class Query implements IQuery {
         return this;
     }
 
-    public void all() {
-
+    public IQuery limit(int rows) {
+        if (status == SELECT) {
+            sql += " LIMIT " + rows;
+        }
+        return this;
     }
 
-    public void limit() {
-
+    public IQuery limit(int offset, int rows) {
+        if (status == SELECT) {
+            sql += " LIMIT " + offset + ", " + rows;
+        }
+        return this;
     }
 }
