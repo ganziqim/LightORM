@@ -7,27 +7,53 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.Vector;
 
 // LightORM
 // create by GanZiQim at 2016.10.27
 // 2016.10.27: createTable
 class Database implements IDatabase {
-    protected boolean connected = false;
-    private int connectionNumbers = 5;
-    private ArrayList<Session> sessionPool = null;
+    protected boolean inited = false;
+    private int connectionNumber = 0;
+    private int initConnectionNumber = 5;
+    private int maxConnectionNumber = 50;
+    private int incrementalConnections = 5;
+    private Vector<Session> sessionPool = null;
 
     public Database() {
-        sessionPool = new ArrayList<Session>();
+        sessionPool = new Vector<Session>();
     }
 
     public Database(int ConnectionNumbers) {
-        this.connectionNumbers = ConnectionNumbers;
+        this.initConnectionNumber = ConnectionNumbers;
+    }
+
+    public int getInitConnectionNumber() {
+        return initConnectionNumber;
+    }
+
+    public void setInitConnectionNumber(int initConnectionNumber) {
+        this.initConnectionNumber = initConnectionNumber;
+    }
+
+    public int getMaxConnectionNumber() {
+        return maxConnectionNumber;
+    }
+
+    public void setMaxConnectionNumber(int maxConnectionNumber) {
+        this.maxConnectionNumber = maxConnectionNumber;
+    }
+
+    public int getIncrementalConnections() {
+        return incrementalConnections;
+    }
+
+    public void setIncrementalConnections(int incrementalConnections) {
+        this.incrementalConnections = incrementalConnections;
     }
 
     public boolean init() {
-        for (int i = 0; i < connectionNumbers; i++) {
-            sessionPool.add(new Session(connect()));
-        }
+        addConnection(initConnectionNumber);
         return true;
     }
 
@@ -84,6 +110,13 @@ class Database implements IDatabase {
         }
     }
 
+    private void addConnection(int number) {
+        for (int i = 0; i < number; i++) {
+            sessionPool.addElement(new Session(connect()));
+        }
+        connectionNumber += number;
+    }
+
     public Session getSession() {
         for (Session ses : sessionPool) {
             if (!ses.isUsed()) {
@@ -91,7 +124,23 @@ class Database implements IDatabase {
                 return ses;
             }
         }
-        System.out.println("full!");
+
+        if (connectionNumber < maxConnectionNumber) {
+            if (maxConnectionNumber - connectionNumber <= incrementalConnections) {
+                addConnection(incrementalConnections);
+            } else {
+                addConnection(maxConnectionNumber - connectionNumber);
+            }
+
+            for (Session ses : sessionPool) {
+                if (!ses.isUsed()) {
+                    ses.setUsed(true);
+                    return ses;
+                }
+            }
+        }
+
+        System.out.println("The connection pool is full!");
         return null;
     }
 
@@ -99,7 +148,7 @@ class Database implements IDatabase {
         for (Session ses : sessionPool) {
             ses.dispose();
         }
-        connected = false;
+        inited = false;
     }
 
     public void recovery(ISession session) {

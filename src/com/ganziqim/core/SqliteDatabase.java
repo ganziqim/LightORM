@@ -34,7 +34,7 @@ public class SqliteDatabase extends Database {
             e.printStackTrace();
             return null;
         }
-        connected = true;
+        inited = true;
         return conn;
     }
 }

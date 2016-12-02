@@ -3,16 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="d99ee9aa-cd11-4b28-89c2-08a61cd35f60" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Test/Student.java" afterPath="$PROJECT_DIR$/src/Test/Student.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Test/Test.java" afterPath="$PROJECT_DIR$/src/Test/Test.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ganziqim/core/Database.java" afterPath="$PROJECT_DIR$/src/com/ganziqim/core/Database.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ganziqim/core/IDatabase.java" afterPath="$PROJECT_DIR$/src/com/ganziqim/core/IDatabase.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ganziqim/core/IQuery.java" afterPath="$PROJECT_DIR$/src/com/ganziqim/core/IQuery.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ganziqim/core/MysqlDatabase.java" afterPath="$PROJECT_DIR$/src/com/ganziqim/core/MysqlDatabase.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ganziqim/core/Query.java" afterPath="$PROJECT_DIR$/src/com/ganziqim/core/Query.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ganziqim/core/Session.java" afterPath="$PROJECT_DIR$/src/com/ganziqim/core/Session.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ganziqim/core/SqliteDatabase.java" afterPath="$PROJECT_DIR$/src/com/ganziqim/core/SqliteDatabase.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ganziqim/utils/SqlStringGenerator.java" afterPath="$PROJECT_DIR$/src/com/ganziqim/utils/SqlStringGenerator.java" />
     </list>
     <ignored path="LightORM.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -42,15 +35,57 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Test.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Test/Test.java">
+      <file leaf-file-name="SqliteDatabase.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/ganziqim/core/SqliteDatabase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2024">
-              <caret line="55" column="5" lean-forward="true" selection-start-line="55" selection-start-column="5" selection-end-line="55" selection-end-column="5" />
+            <state relative-caret-position="653">
+              <caret line="36" column="14" lean-forward="false" selection-start-line="36" selection-start-column="14" selection-end-line="36" selection-end-column="14" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MethodNameGetter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/ganziqim/utils/MethodNameGetter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="125">
+              <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Database.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/ganziqim/core/Database.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="565">
+              <caret line="15" column="37" lean-forward="true" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#761#770#0" expanded="true" />
+                <element signature="e#798#799#0" expanded="true" />
+                <element signature="e#859#860#0" expanded="true" />
+                <marker date="1480681986907" expanded="true" signature="2177:2206" ph="CREATE TABLE... missingValue" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PrimaryKey.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/ganziqim/annotation/PrimaryKey.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="396">
+              <caret line="12" column="18" lean-forward="false" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MaxLength.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/ganziqim/annotation/MaxLength.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="484">
+              <caret line="14" column="1" lean-forward="false" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -65,69 +100,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SqliteDatabase.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/ganziqim/core/SqliteDatabase.java">
+      <file leaf-file-name="SqlStringGenerator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/ganziqim/utils/SqlStringGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="412">
-              <caret line="31" column="74" lean-forward="true" selection-start-line="31" selection-start-column="74" selection-end-line="31" selection-end-column="74" />
+            <state relative-caret-position="-667">
+              <caret line="34" column="34" lean-forward="true" selection-start-line="34" selection-start-column="34" selection-end-line="34" selection-end-column="34" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MysqlDatabase.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/ganziqim/core/MysqlDatabase.java">
+      <file leaf-file-name="Dao.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/ganziqim/utils/Dao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="880">
-              <caret line="43" column="24" lean-forward="true" selection-start-line="43" selection-start-column="24" selection-end-line="43" selection-end-column="24" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IQuery.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/ganziqim/core/IQuery.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="660">
-              <caret line="15" column="27" lean-forward="true" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
+            <state relative-caret-position="-2647">
+              <caret line="129" column="25" lean-forward="false" selection-start-line="129" selection-start-column="25" selection-end-line="129" selection-end-column="25" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Database.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/ganziqim/core/Database.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="720">
-              <caret line="108" column="13" lean-forward="true" selection-start-line="108" selection-start-column="13" selection-end-line="108" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#555#556#0" expanded="true" />
-                <element signature="e#609#610#0" expanded="true" />
-                <element signature="e#655#656#0" expanded="true" />
-                <element signature="e#713#714#0" expanded="true" />
-                <element signature="e#921#922#0" expanded="true" />
-                <element signature="e#948#949#0" expanded="true" />
-                <marker date="1480664442672" expanded="true" signature="1437:1466" ph="CREATE TABLE... missingValue" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Student.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Test/Student.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-308">
-              <caret line="14" column="27" lean-forward="true" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#719#720#0" expanded="true" />
-                <element signature="e#749#750#0" expanded="true" />
-                <element signature="e#795#796#0" expanded="true" />
-                <element signature="e#833#834#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -135,7 +123,7 @@
       <file leaf-file-name="Session.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/ganziqim/core/Session.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="764">
+            <state relative-caret-position="257">
               <caret line="84" column="9" lean-forward="true" selection-start-line="84" selection-start-column="9" selection-end-line="84" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -150,24 +138,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/ganziqim/core/test">
+      <file leaf-file-name="Query.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/ganziqim/core/Query.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="7040">
-              <caret line="160" column="26" lean-forward="false" selection-start-line="160" selection-start-column="26" selection-end-line="160" selection-end-column="26" />
+            <state relative-caret-position="236">
+              <caret line="180" column="5" lean-forward="false" selection-start-line="180" selection-start-column="5" selection-end-line="180" selection-end-column="5" />
               <folding>
-                <marker date="1480677460159" expanded="true" signature="7370:7391" ph="select count... missingValue" />
+                <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IDatabase.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/ganziqim/core/IDatabase.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="616">
-              <caret line="14" column="1" lean-forward="true" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -223,13 +201,13 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/Test/Student.java" />
         <option value="$PROJECT_DIR$/src/com/ganziqim/utils/SqlStringGenerator.java" />
-        <option value="$PROJECT_DIR$/src/com/ganziqim/core/SqliteDatabase.java" />
-        <option value="$PROJECT_DIR$/src/com/ganziqim/core/MysqlDatabase.java" />
         <option value="$PROJECT_DIR$/src/com/ganziqim/core/Session.java" />
-        <option value="$PROJECT_DIR$/src/com/ganziqim/core/Database.java" />
         <option value="$PROJECT_DIR$/src/com/ganziqim/core/IDatabase.java" />
         <option value="$PROJECT_DIR$/src/com/ganziqim/core/test.java" />
         <option value="$PROJECT_DIR$/src/Test/Test.java" />
+        <option value="$PROJECT_DIR$/src/com/ganziqim/core/MysqlDatabase.java" />
+        <option value="$PROJECT_DIR$/src/com/ganziqim/core/SqliteDatabase.java" />
+        <option value="$PROJECT_DIR$/src/com/ganziqim/core/Database.java" />
       </list>
     </option>
   </component>
@@ -247,10 +225,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-11" />
-    <option name="y" value="8" />
-    <option name="width" value="3014" />
-    <option name="height" value="1951" />
+    <option name="x" value="-12" />
+    <option name="y" value="-12" />
+    <option name="width" value="3024" />
+    <option name="height" value="1972" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -955,7 +933,7 @@
       <workItem from="1480493568561" duration="3432000" />
       <workItem from="1480500090187" duration="382000" />
       <workItem from="1480504228836" duration="10314000" />
-      <workItem from="1480659518215" duration="6834000" />
+      <workItem from="1480659518215" duration="9757000" />
     </task>
     <task id="LOCAL-00001" summary="Update File Struct">
       <created>1479750613878</created>
@@ -999,14 +977,21 @@
       <option name="project" value="LOCAL" />
       <updated>1480660326843</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Add Sqlite Support">
+      <created>1480678030632</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1480678030632</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="86180000" />
+    <option name="totallyTimeSpent" value="89103000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-11" y="8" width="3014" height="1951" extended-state="0" />
+    <frame x="-12" y="-12" width="3024" height="1972" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1019,12 +1004,12 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32952598" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33046472" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3265306" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27567568" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19364549" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.193" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1057,11 +1042,11 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Update File Struct" />
     <MESSAGE value="Add Utils" />
-    <MESSAGE value="Add Sqlite Support" />
     <MESSAGE value="use jdbc transaction api" />
     <MESSAGE value="Add Query and IQuery" />
     <MESSAGE value="Add Query Select Function" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Query Select Function" />
+    <MESSAGE value="Add Sqlite Support" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Sqlite Support" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1102,13 +1087,9 @@
           <caret line="43" column="59" lean-forward="false" selection-start-line="43" selection-start-column="59" selection-end-line="43" selection-end-column="59" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#555#556#0" expanded="true" />
-            <element signature="e#609#610#0" expanded="true" />
-            <element signature="e#655#656#0" expanded="true" />
-            <element signature="e#713#714#0" expanded="true" />
-            <element signature="e#921#922#0" expanded="true" />
-            <element signature="e#948#949#0" expanded="true" />
-            <marker date="1480664442672" expanded="true" signature="1437:1466" ph="CREATE TABLE... missingValue" />
+            <element signature="e#798#799#0" expanded="true" />
+            <element signature="e#859#860#0" expanded="true" />
+            <marker date="1480681986907" expanded="true" signature="2177:2206" ph="CREATE TABLE... missingValue" />
           </folding>
         </state>
       </provider>
@@ -1169,13 +1150,9 @@
           <caret line="43" column="59" lean-forward="false" selection-start-line="43" selection-start-column="59" selection-end-line="43" selection-end-column="59" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#555#556#0" expanded="true" />
-            <element signature="e#609#610#0" expanded="true" />
-            <element signature="e#655#656#0" expanded="true" />
-            <element signature="e#713#714#0" expanded="true" />
-            <element signature="e#921#922#0" expanded="true" />
-            <element signature="e#948#949#0" expanded="true" />
-            <marker date="1480664442672" expanded="true" signature="1437:1466" ph="CREATE TABLE... missingValue" />
+            <element signature="e#798#799#0" expanded="true" />
+            <element signature="e#859#860#0" expanded="true" />
+            <marker date="1480681986907" expanded="true" signature="2177:2206" ph="CREATE TABLE... missingValue" />
           </folding>
         </state>
       </provider>
@@ -1225,13 +1202,9 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#555#556#0" expanded="true" />
-            <element signature="e#609#610#0" expanded="true" />
-            <element signature="e#655#656#0" expanded="true" />
-            <element signature="e#713#714#0" expanded="true" />
-            <element signature="e#921#922#0" expanded="true" />
-            <element signature="e#948#949#0" expanded="true" />
-            <marker date="1480664442672" expanded="true" signature="1437:1466" ph="CREATE TABLE... missingValue" />
+            <element signature="e#798#799#0" expanded="true" />
+            <element signature="e#859#860#0" expanded="true" />
+            <marker date="1480681986907" expanded="true" signature="2177:2206" ph="CREATE TABLE... missingValue" />
           </folding>
         </state>
       </provider>
@@ -1256,13 +1229,9 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#555#556#0" expanded="true" />
-            <element signature="e#609#610#0" expanded="true" />
-            <element signature="e#655#656#0" expanded="true" />
-            <element signature="e#713#714#0" expanded="true" />
-            <element signature="e#921#922#0" expanded="true" />
-            <element signature="e#948#949#0" expanded="true" />
-            <marker date="1480664442672" expanded="true" signature="1437:1466" ph="CREATE TABLE... missingValue" />
+            <element signature="e#798#799#0" expanded="true" />
+            <element signature="e#859#860#0" expanded="true" />
+            <marker date="1480681986907" expanded="true" signature="2177:2206" ph="CREATE TABLE... missingValue" />
           </folding>
         </state>
       </provider>
@@ -1288,13 +1257,9 @@
           <caret line="6" column="4" lean-forward="false" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#555#556#0" expanded="true" />
-            <element signature="e#609#610#0" expanded="true" />
-            <element signature="e#655#656#0" expanded="true" />
-            <element signature="e#713#714#0" expanded="true" />
-            <element signature="e#921#922#0" expanded="true" />
-            <element signature="e#948#949#0" expanded="true" />
-            <marker date="1480664442672" expanded="true" signature="1437:1466" ph="CREATE TABLE... missingValue" />
+            <element signature="e#798#799#0" expanded="true" />
+            <element signature="e#859#860#0" expanded="true" />
+            <marker date="1480681986907" expanded="true" signature="2177:2206" ph="CREATE TABLE... missingValue" />
           </folding>
         </state>
       </provider>
@@ -1309,22 +1274,6 @@
             <folding />
           </first_editor>
           <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ganziqim/annotation/MaxLength.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="14" column="1" lean-forward="false" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ganziqim/annotation/PrimaryKey.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="12" column="18" lean-forward="false" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1397,59 +1346,9 @@
         <state relative-caret-position="-10560">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1480678003871" expanded="true" signature="83323:83340" ph="..." />
-            <marker date="1480678003871" expanded="true" signature="83323:83371" ph="..." />
+            <marker date="1480681986944" expanded="true" signature="80150:80167" ph="..." />
+            <marker date="1480681986944" expanded="true" signature="80150:80198" ph="..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ganziqim/utils/MethodNameGetter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ganziqim/utils/SqlStringGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="616">
-          <caret line="34" column="34" lean-forward="true" selection-start-line="34" selection-start-column="34" selection-end-line="34" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ganziqim/core/ISession.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="11" column="18" lean-forward="false" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ganziqim/core/Query.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="180" column="5" lean-forward="false" selection-start-line="180" selection-start-column="5" selection-end-line="180" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ganziqim/utils/Dao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="129" column="25" lean-forward="false" selection-start-line="129" selection-start-column="25" selection-end-line="129" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ganziqim/utils/ArrayUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1467,9 +1366,74 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Test/Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-836">
+          <caret line="17" column="9" lean-forward="true" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#761#770#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ganziqim/core/test">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="18" column="49" lean-forward="true" selection-start-line="18" selection-start-column="49" selection-end-line="18" selection-end-column="49" />
+          <folding>
+            <marker date="1480677460159" expanded="true" signature="7370:7391" ph="select count... missingValue" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ganziqim/core/IDatabase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="616">
+          <caret line="14" column="1" lean-forward="true" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ganziqim/core/IQuery.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="15" column="27" lean-forward="true" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ganziqim/core/ISession.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="11" column="18" lean-forward="false" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ganziqim/core/MysqlDatabase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="672">
+          <caret line="45" column="14" lean-forward="false" selection-start-line="45" selection-start-column="14" selection-end-line="45" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ganziqim/core/Query.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="180" column="5" lean-forward="false" selection-start-line="180" selection-start-column="5" selection-end-line="180" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ganziqim/core/Session.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="764">
+        <state relative-caret-position="257">
           <caret line="84" column="9" lean-forward="true" selection-start-line="84" selection-start-column="9" selection-end-line="84" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1483,74 +1447,71 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ganziqim/core/test">
+    <entry file="file://$PROJECT_DIR$/src/com/ganziqim/core/SqliteDatabase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7040">
-          <caret line="160" column="26" lean-forward="false" selection-start-line="160" selection-start-column="26" selection-end-line="160" selection-end-column="26" />
-          <folding>
-            <marker date="1480677460159" expanded="true" signature="7370:7391" ph="select count... missingValue" />
-          </folding>
+        <state relative-caret-position="653">
+          <caret line="36" column="14" lean-forward="false" selection-start-line="36" selection-start-column="14" selection-end-line="36" selection-end-column="14" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ganziqim/core/IQuery.java">
+    <entry file="file://$PROJECT_DIR$/src/com/ganziqim/annotation/PrimaryKey.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="15" column="27" lean-forward="true" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
+        <state relative-caret-position="396">
+          <caret line="12" column="18" lean-forward="false" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ganziqim/annotation/MaxLength.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="14" column="1" lean-forward="false" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ganziqim/utils/ArrayUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ganziqim/utils/Dao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2647">
+          <caret line="129" column="25" lean-forward="false" selection-start-line="129" selection-start-column="25" selection-end-line="129" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ganziqim/utils/MethodNameGetter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ganziqim/utils/SqlStringGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-667">
+          <caret line="34" column="34" lean-forward="true" selection-start-line="34" selection-start-column="34" selection-end-line="34" selection-end-column="34" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ganziqim/core/Database.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="108" column="13" lean-forward="true" selection-start-line="108" selection-start-column="13" selection-end-line="108" selection-end-column="13" />
+        <state relative-caret-position="565">
+          <caret line="15" column="37" lean-forward="true" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#555#556#0" expanded="true" />
-            <element signature="e#609#610#0" expanded="true" />
-            <element signature="e#655#656#0" expanded="true" />
-            <element signature="e#713#714#0" expanded="true" />
-            <element signature="e#921#922#0" expanded="true" />
-            <element signature="e#948#949#0" expanded="true" />
-            <marker date="1480664442672" expanded="true" signature="1437:1466" ph="CREATE TABLE... missingValue" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ganziqim/core/IDatabase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="616">
-          <caret line="14" column="1" lean-forward="true" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ganziqim/core/MysqlDatabase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="880">
-          <caret line="43" column="24" lean-forward="true" selection-start-line="43" selection-start-column="24" selection-end-line="43" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ganziqim/core/SqliteDatabase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="412">
-          <caret line="31" column="74" lean-forward="true" selection-start-line="31" selection-start-column="74" selection-end-line="31" selection-end-column="74" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Test/Test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2024">
-          <caret line="55" column="5" lean-forward="true" selection-start-line="55" selection-start-column="5" selection-end-line="55" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#761#770#0" expanded="true" />
+            <element signature="e#798#799#0" expanded="true" />
+            <element signature="e#859#860#0" expanded="true" />
+            <marker date="1480681986907" expanded="true" signature="2177:2206" ph="CREATE TABLE... missingValue" />
           </folding>
         </state>
       </provider>
