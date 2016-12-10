@@ -3,7 +3,7 @@ package com.ganziqim.utils;
 import java.lang.reflect.Field;
 
 /**
- * Created by ganzi on 2016/11/24.
+ * Created by GanZiQim on 2016/11/24.
  */
 public class MethodNameGetter {
     public static String getGetterName(final String fieldName) {

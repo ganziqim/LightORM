@@ -16,16 +16,14 @@ public class Dao {
         this.conn = conn;
 	}
 
-    public List<Map<String, Object>> excuteQuery(String sql) {
+    public List<Map<String, Object>> executeQuery(String sql) {
         PreparedStatement stmt = null;
         ResultSet rs = null;
         List<Map<String, Object>> resultList = new ArrayList<Map<String, Object>>();
 
         try {
             stmt = conn.prepareStatement(sql);
-
             rs = stmt.executeQuery(); // 得到结果集
-
             resultList = resultSetHander(rs);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -34,21 +32,16 @@ public class Dao {
         return resultList;
     }
 
-	public List<Map<String, Object>> excuteQuery(String sql, Object[] params) {
+	public List<Map<String, Object>> executeQuery(String sql, Object[] params) {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		List<Map<String, Object>> resultList = new ArrayList<Map<String, Object>>();
 
 		try {
 			stmt = conn.prepareStatement(sql);
-
-			// 填充参数
 			fillStatement(stmt, params);
-
 			rs = stmt.executeQuery(); // 得到结果集
-
 			resultList = resultSetHander(rs);
-
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -61,22 +54,13 @@ public class Dao {
 		int rs = 0;
 
 		try {
-			conn.setAutoCommit(false); // 关闭事务
 			stmt = conn.prepareStatement(sql); // 创建PreparedStatement对象
-
 			// 执行查询
 			rs = stmt.executeUpdate();
-
-			// 提交事务
-			conn.commit();
-			// 把事务设置为原来的状态
-			conn.setAutoCommit(true);
 		} catch (SQLException e) {
 			// 捕获异常时事务回滚
 			try {
 				conn.rollback();
-//				if (!conn.getAutoCommit())
-//					conn.setAutoCommit(true);
 			} catch (SQLException e2) {
 				e2.printStackTrace();
 			}
@@ -91,23 +75,14 @@ public class Dao {
 		int rs = 0;
 
 		try {
-			conn.setAutoCommit(false); // 关闭事务
 			stmt = conn.prepareStatement(sql); // 创建PreparedStatement对象
 			fillStatement(stmt, params); // 填充参数
-
 			// 执行查询
 			rs = stmt.executeUpdate();
-
-			// 提交事务
-			conn.commit();
-			// 把事务设置为原来的状态
-			conn.setAutoCommit(true);
 		} catch (SQLException e) {
 			// 捕获异常时事务回滚
 			try {
 				conn.rollback();
-				if (!conn.getAutoCommit())
-					conn.setAutoCommit(true);
 			} catch (SQLException e2) {
 				e2.printStackTrace();
 			}
@@ -126,8 +101,9 @@ public class Dao {
 		while (rs.next()) {
 			Map<String, Object> map = new HashMap<String, Object>();
 
-			for (int i = 0; i < cols; i++)
+			for (int i = 0; i < cols; i++) {
 				map.put(rsmd.getColumnLabel(i + 1), rs.getObject(i + 1));
+			}
 
 			resultList.add(map);
 		}
@@ -153,8 +129,9 @@ public class Dao {
 			}
 		}
 
-		if (params == null)
+		if (params == null) {
 			return;
+		}
 
 		for (int i = 0; i < params.length; i++) {
 			if (params[i] != null) { // 数据库下标是从1开始而不是0
@@ -182,24 +159,21 @@ public class Dao {
 		try{
 			ps = conn.prepareStatement(sqlTemplate);
 
-			conn.setAutoCommit(false);
-
-			for(int i=0;i<list.size();i++){
+			for (int i = 0; i < list.size(); i++) {
 				Object[] os = list.get(i);
-				for(int j = 0;j<os.length;j++)
-					ps.setObject(j+1, os[j]);
 
+				for (int j = 0; j < os.length; j++) {
+					ps.setObject(j + 1, os[j]);
+				}
 				ps.addBatch();
 			}
 
 			rs = ps.executeBatch();
-			conn.commit();
-			conn.setAutoCommit(true);
-		} catch(SQLException e){
+		} catch (SQLException e) {
 			e.printStackTrace();
-			try{
-				conn.rollback();conn.setAutoCommit(true);
-			}catch(SQLException e1){
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
 		}

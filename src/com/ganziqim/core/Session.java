@@ -26,19 +26,15 @@ class Session implements ISession {
         }
     }
 
-    Connection getCon() {
-        return con;
-    }
-
     public Dao getDao() {
         return dao;
     }
 
-    public boolean isUsed() {
+    boolean isUsed() {
         return isUsed;
     }
 
-    public void setUsed(boolean used) {
+    void setUsed(boolean used) {
         isUsed = used;
     }
 
@@ -67,7 +63,7 @@ class Session implements ISession {
     public void rollback(String savepointName) {
         try {
             for (Savepoint savepoint : savepoints) {
-                if (savepoint.getSavepointName() == savepointName) {
+                if (savepoint.getSavepointName().equals(savepointName)) {
                     con.rollback(savepoint);
                     savepoints.remove(savepoint);
                 }
@@ -85,7 +81,7 @@ class Session implements ISession {
         }
     }
 
-    public void dispose() {
+    void dispose() {
         try {
             con.close();
         } catch (SQLException e) {

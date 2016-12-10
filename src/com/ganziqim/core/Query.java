@@ -5,7 +5,6 @@ import com.ganziqim.utils.MethodNameGetter;
 import com.ganziqim.utils.SqlStringGenerator;
 
 import java.lang.reflect.Field;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +26,7 @@ class Query implements IQuery {
     Query(Class cls, Session ses) {
         this.cls = cls;
         this.ses = ses;
-        this.dao = new Dao(ses.getCon());
+        this.dao = ses.getDao();
     }
 
     public void add(Object obj) {
@@ -40,17 +39,13 @@ class Query implements IQuery {
 
         System.out.println("trying " + sql);
         Statement stmt = null;
-        try {
-            stmt = ses.getCon().createStatement();
-            stmt.execute(sql);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+
+        dao.executeUpdate(sql);
 
         sql = "";
     }
 
-    public void addAll(List objs) {
+    public void addAll(List<Object> objs) {
         sql = "INSERT INTO ";
         String clsName = getClassName();
 
@@ -66,12 +61,8 @@ class Query implements IQuery {
 
         System.out.println("trying " + sql);
         Statement stmt = null;
-        try {
-            stmt = ses.getCon().createStatement();
-            stmt.execute(sql);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+
+        dao.executeUpdate(sql);
 
         sql = "";
     }
@@ -142,10 +133,10 @@ class Query implements IQuery {
     }
 
     public List execute() {
-        System.out.println("trying " + sql);
+        System.out.println("Trying " + sql);
 
         if (status == SELECT) {
-            List<Map<String, Object>> result = dao.excuteQuery(sql);
+            List<Map<String, Object>> result = dao.executeQuery(sql);
 
             ArrayList lst = new ArrayList();
             try {

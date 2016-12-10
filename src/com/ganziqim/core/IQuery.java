@@ -3,11 +3,11 @@ package com.ganziqim.core;
 import java.util.List;
 
 /**
- * Created by ganzi on 2016/11/30.
+ * Created by GanZiQim on 2016/11/30.
  */
 public interface IQuery {
     void add(Object obj);
-    void addAll(List objs);
+    void addAll(List<Object> objs);
     IQuery delete();
     IQuery update(String exp);
     IQuery select();

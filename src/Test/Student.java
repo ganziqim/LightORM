@@ -1,10 +1,11 @@
 package Test;
 
 import com.ganziqim.annotation.MaxLength;
+import com.ganziqim.annotation.NotNull;
 import com.ganziqim.annotation.PrimaryKey;
 
 /**
- * Created by admin on 2016/10/27.
+ * Created by GanZiQim on 2016/10/27.
  */
 public class Student {
     @PrimaryKey
@@ -13,6 +14,8 @@ public class Student {
     private String name;
     private int age;
     private double tuition;
+    @NotNull
+    private int test1;
 
     public Student() {
 
@@ -48,5 +51,13 @@ public class Student {
 
     public void setTuition(double tuition) {
         this.tuition = tuition;
+    }
+
+    public int getTest1() {
+        return test1;
+    }
+
+    public void setTest1(int test1) {
+        this.test1 = test1;
     }
 }

@@ -4,7 +4,7 @@ import java.lang.reflect.Field;
 import java.sql.JDBCType;
 
 /**
- * Created by ganzi on 2016/11/23.
+ * Created by GanZiQim on 2016/11/23.
  */
 public class SqlStringGenerator {
     public static String getSqlType(Field field) {

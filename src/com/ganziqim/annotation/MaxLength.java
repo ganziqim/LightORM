@@ -6,10 +6,10 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Created by ganzi on 2016/11/23.
+ * Created by GanZiQim on 2016/11/23.
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
 public @interface MaxLength {
-    int value();
+    int value() default 128;
 }

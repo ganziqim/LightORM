@@ -7,10 +7,9 @@ import java.sql.DriverManager;
 import java.util.Properties;
 
 /**
- * Created by ganzi on 2016/11/22.
+ * Created by GanZiQim on 2016/11/22.
  */
 public class MysqlDatabase extends Database {
-    private String databaseName;
     private String userName;
     private String password;
 
@@ -19,6 +18,7 @@ public class MysqlDatabase extends Database {
         this.databaseName = databaseName;
         this.userName = userName;
         this.password = password;
+        getTableColumnSqlScript = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME=? AND TABLE_SCHEMA=?";
     }
 
     public void setUserName(String userName) {
@@ -30,20 +30,20 @@ public class MysqlDatabase extends Database {
     }
 
     @Override
-    public Connection connect() {
+    protected Connection getConnection() {
         Connection conn = null;
         try {
-            Class.forName("com.mysql.jdbc.Driver").newInstance();
+            Class.forName("com.mysql.jdbc.Driver");
             Properties p = new Properties();
             p.setProperty("useSSL", "false");
             p.setProperty("user", userName);
             p.setProperty("password", password);
             conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/" + databaseName, p);
+            conn.setAutoCommit(false);
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
-        inited = true;
         return conn;
     }
 }

@@ -6,7 +6,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 /**
- * Created by ganzi on 2016/11/22.
+ * Created by GanZiQim on 2016/11/22.
  */
 public class SqliteDatabase extends Database {
     private String filePath;
@@ -16,25 +16,25 @@ public class SqliteDatabase extends Database {
         this.filePath = filePath;
     }
 
-    public String getFileName() {
+    public String getFilePath() {
         return filePath;
     }
 
-    public void setFileName(String filePath) {
+    public void setFilePath(String filePath) {
         this.filePath = filePath;
     }
 
     @Override
-    public Connection connect() {
+    protected Connection getConnection() {
         Connection conn = null;
         try {
             Class.forName("org.sqlite.JDBC");
             conn = DriverManager.getConnection("jdbc:sqlite:" + filePath);
+            conn.setAutoCommit(false);
         } catch(Exception e) {
             e.printStackTrace();
             return null;
         }
-        inited = true;
         return conn;
     }
 }

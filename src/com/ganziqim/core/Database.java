@@ -1,31 +1,34 @@
 package com.ganziqim.core;
 
 import com.ganziqim.annotation.MaxLength;
+import com.ganziqim.annotation.NotNull;
 import com.ganziqim.annotation.PrimaryKey;
 import com.ganziqim.utils.SqlStringGenerator;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.Vector;
 
 // LightORM
 // create by GanZiQim at 2016.10.27
 // 2016.10.27: createTable
 class Database implements IDatabase {
-    protected boolean inited = false;
+    private boolean inited = false;
     private int connectionNumber = 0;
     private int initConnectionNumber = 5;
     private int maxConnectionNumber = 50;
     private int incrementalConnections = 5;
     private Vector<Session> sessionPool = null;
 
-    public Database() {
-        sessionPool = new Vector<Session>();
-    }
+    protected String getTableColumnSqlScript = null;
 
-    public Database(int ConnectionNumbers) {
-        this.initConnectionNumber = ConnectionNumbers;
+    protected String databaseName = null;
+
+    Database() {
+        sessionPool = new Vector<Session>();
     }
 
     public int getInitConnectionNumber() {
@@ -54,70 +57,151 @@ class Database implements IDatabase {
 
     public boolean init() {
         addConnection(initConnectionNumber);
+        inited = true;
         return true;
     }
 
-    public Connection connect() {
+    protected Connection getConnection() {
         return null;
     }
 
-    public void createTable(Class obj) {
-        ArrayList<Class> objs = new ArrayList<Class>();
-        objs.add(obj);
-        createTable(objs);
+    private String getTableName(Class cls) {
+        String[] clsNames = cls.getName().split("\\.");
+        return clsNames[clsNames.length - 1];
     }
 
-    public void createTable(ArrayList<Class> objs) {
-        for (Class obj : objs) {
-            Field[] fields;
-            String[] objNames;
+    public void createTable(List<Class> clazz) {
+        for (Class cls : clazz) {
+            createTable(cls);
+        }
+    }
 
-            fields = obj.getDeclaredFields();
+    public void createTable(Class cls) {
+        if (!inited) {
+            System.out.println("Database uninit!");
+            return;
+        }
 
-            objNames = obj.getName().split("\\.");
+        Field[] fields = cls.getDeclaredFields();
 
-            String objName = objNames[objNames.length - 1];
+        String tableName = getTableName(cls);
 
-            String sql = "CREATE TABLE " + objName + "(";
+        String sql = "CREATE TABLE " + tableName + "(";
 
-            for (Field field : fields) {
+        for (Field field : fields) {
+            String sqlType = SqlStringGenerator.getSqlType(field);
+            sql += field.getName() + " " + sqlType;
+
+            sql = fieldAnnotationHandler(field, sql);
+
+            sql += ",";
+        }
+
+        sql = sql.substring(0, sql.length()-1);
+        sql += ")";
+
+        System.out.println("Trying " + sql);
+
+        try {
+            sessionPool.get(0).getDao().executeUpdate(sql);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void updateTable(Class cls) {
+        if (!inited) {
+            System.out.println("Database uninit!");
+            return;
+        }
+
+        String tableName = getTableName(cls);
+
+        Object[] params = new Object[2];
+        params[0] = tableName;
+        params[1] = databaseName;
+
+        List<Map<String, Object>> result = null;
+
+        result = sessionPool.get(0).getDao().executeQuery(getTableColumnSqlScript, params);
+        ArrayList<String> sameColumns = new ArrayList<String>();
+
+        Field[] fields = cls.getDeclaredFields();
+
+        String sql = "ALTER TABLE " + tableName;
+
+        for (Field field : fields) {
+            int flag = 0;
+            for (Map map : result) {
+                if (field.getName().equals(map.get("COLUMN_NAME").toString())) {
+                    sameColumns.add(field.getName());
+                    result.remove(map);
+
+                    flag = 1;
+                    break;
+                }
+            }
+
+            if (flag == 0) {
                 String sqlType = SqlStringGenerator.getSqlType(field);
-                sql += field.getName() + " " + sqlType;
+                sql += " ADD " + field.getName() + " " + sqlType;
 
-                if ("VARCHAR".equals(sqlType)) {
-                    Annotation a = field.getAnnotation(MaxLength.class);
-                    if (a != null) {
-                        sql += "(" + field.getAnnotation(MaxLength.class).value() + ")";
-                    }
-                }
-
-                if (field.getAnnotation(PrimaryKey.class) != null) {
-                    sql += " PRIMARY KEY";
-                }
+                sql = fieldAnnotationHandler(field, sql);
 
                 sql += ",";
             }
-            sql = sql.substring(0, sql.length()-1);
-            sql += ")";
+        }
 
-            System.out.println("trying " + sql);
+        for (Map map : result) {
+            sql += " DROP COLUMN " + map.get("COLUMN_NAME").toString() + ",";
+        }
 
-            try {
-                sessionPool.get(0).getDao().executeUpdate(sql);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+        sql = sql.substring(0, sql.length()-1);
+
+        System.out.println("Trying " + sql);
+        try {
+            sessionPool.get(0).getDao().executeUpdate(sql);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
-    private void addConnection(int number) {
-        for (int i = 0; i < number; i++) {
-            sessionPool.addElement(new Session(connect()));
+    private String fieldAnnotationHandler(Field field, String sql) {
+        String sqlType = SqlStringGenerator.getSqlType(field);
+
+        if ("VARCHAR".equals(sqlType)) {
+            Annotation a = field.getAnnotation(MaxLength.class);
+            if (a != null) {
+                sql += "(" + field.getAnnotation(MaxLength.class).value() + ")";
+            } else {
+                sql += "(128)";
+            }
         }
-        connectionNumber += number;
+
+        if (field.getAnnotation(NotNull.class) != null) {
+            sql += " NOT NULL ";
+        }
+
+        if (field.getAnnotation(PrimaryKey.class) != null) {
+            sql += " PRIMARY KEY";
+        }
+
+        return sql;
+    }
+
+    private void addConnection(int addNumber) {
+        for (int i = 0; i < addNumber; i++) {
+            sessionPool.addElement(new Session(getConnection()));
+        }
+        connectionNumber += addNumber;
     }
 
     public Session getSession() {
+        if (!inited) {
+            System.out.println("Database uninit!");
+            return null;
+        }
+
         for (Session ses : sessionPool) {
             if (!ses.isUsed()) {
                 ses.setUsed(true);
